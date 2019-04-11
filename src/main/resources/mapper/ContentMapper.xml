@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.blog.dao.ContentDao">
+    <insert id="addContent" parameterType="cn.blog.pojo.Markdown">
+        insert into markdown(title,content,uid,date) values (#{title},#{content},#{uid},#{date})
+    </insert>
+    <select id="getContentByContentId" parameterType="int" resultType="cn.blog.pojo.Markdown">
+        select * from markdown
+        <where>
+            id = #{id}
+        </where>
+    </select>
+    <select id="getContentByUserId" parameterType="int" resultType="cn.blog.pojo.Markdown">
+        select id,title,date from markdown
+        <where>
+            uid=#{id}
+        </where>
+    </select>
+</mapper>
